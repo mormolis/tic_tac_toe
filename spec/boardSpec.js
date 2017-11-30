@@ -74,4 +74,18 @@ describe("Board", () => {
             expect(board.returnColumn(1)).toEqual(["O","X"," "]);
         });
     });
+
+    describe(".returnDiagonal", ()=>{
+        it("should return an array with the diagonal values", ()=> {
+            expect(board.returnDiagonal()).toEqual(["O", "X", " "])
+
+        }); 
+    });
+
+    describe(".returnReverseDiagonal", ()=>{
+        it("should return an array with the reverse diagonal values", ()=> {
+            board.inputMarker(2,0,"o");
+            expect(board.returnReverseDiagonal()).toEqual([" ", "X", "O"])
+        }); 
+    });
 });
