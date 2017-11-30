@@ -1,4 +1,3 @@
-
 describe("Board", () => {
 
     var Board = require('./../lib/board.js');
@@ -87,5 +86,23 @@ describe("Board", () => {
             board.inputMarker(2,0,"o");
             expect(board.returnReverseDiagonal()).toEqual([" ", "X", "O"])
         }); 
+    });
+
+    describe(".isAllTheSame", ()=>{
+        it("should return false if the elements on an array are not the same", ()=>{
+            var tempArray = board.returnColumn(1);
+            expect(board.isAllTheSame(tempArray)).toEqual(false);
+        });
+
+        it("should return true if the elements on an array are the same", ()=>{
+            var tempArray = board.returnRow(1);
+            expect(board.isAllTheSame(tempArray)).toEqual(true);
+        });
+
+        it("should throw an error if the argument is not an array", () => {
+            expect(()=> { board.isAllTheSame("string")}).toThrow(new TypeError("Argument must be type of array"))
+            expect(()=> { board.isAllTheSame(new Object)}).toThrow(new TypeError("Argument must be type of array"))
+            
+        });
     });
 });
