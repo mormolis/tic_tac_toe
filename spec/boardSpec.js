@@ -105,4 +105,12 @@ describe("Board", () => {
             
         });
     });
+    describe(".isCellEmpty", ()=>{
+        it("should return false if a cell is not empty", () => {
+            expect(board.isCellEmpty(1,1)).toBeFalsy();
+        });
+        it("should return true if a cell is empty", () => {
+            expect(board.isCellEmpty(2,1)).toBeTruthy();
+        });
+    });
 });
