@@ -59,4 +59,19 @@ describe("Board", () => {
             expect(board.returnRow(1)).toEqual(["X","X","X"]);
         });
     });
+
+    describe(".returnColumn", ()=>{
+        it ("should throw error if column number is negative", () => {
+            expect(()=>{board.returnColumn(-1)}).toThrow(new RangeError("Column out of scope"));
+        });
+
+        it ("should throw error if row number is greater than 2", () => {
+            expect(()=>{board.returnColumn(3)}).toThrow(new RangeError("Column out of scope"));
+        });
+
+        it ("should return the column", ()=>{
+            board.inputMarker(0,1,"O");            
+            expect(board.returnColumn(1)).toEqual(["O","X"," "]);
+        });
+    });
 });
