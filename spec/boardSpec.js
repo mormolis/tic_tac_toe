@@ -43,4 +43,20 @@ describe("Board", () => {
             expect(()=>{board.inputMarker(1,1,"x")}).toThrow(new Error("Cell already marked"));
         });
     });
+
+    describe(".returnRow", ()=>{
+        it ("should throw error if row number is negative", () => {
+            expect(()=>{board.returnRow(-1)}).toThrow(new RangeError("Row out of scope"));
+        });
+
+        it ("should throw error if row number is greater than 2", () => {
+            expect(()=>{board.returnRow(3)}).toThrow(new RangeError("Row out of scope"));
+        });
+
+        it ("should return the row", ()=>{
+            board.inputMarker(1,0,"x");
+            board.inputMarker(1,2,"x");
+            expect(board.returnRow(1)).toEqual(["X","X","X"]);
+        });
+    });
 });
